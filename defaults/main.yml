@@ -1,0 +1,53 @@
+---
+# File: main.yml
+# Type: defaults
+# Part: docker-gitlab-ce
+
+gitlab_debug: false
+
+gitlab_container_name: "docker-gitlab-ce"
+gitlab_container_home: "/srv/data/docker/{{ gitlab_container_name }}"
+
+# Gitlab
+
+gitlab_gitlab_host: localhost
+gitlab_gitlab_port: 10080
+gitlab_gitlab_ssh_port: 10022
+gitlab_gitlab_relative_url_root:
+gitlab_gitlab_secrets_db_key_base: long-and-random-alphanumeric-string
+gitlab_gitlab_secrets_secret_key_base: long-and-random-alphanumeric-string
+gitlab_gitlab_secrets_otp_key_base: long-and-random-alphanumeric-string
+
+gitlab_gitlab_notify_on_broken_builds: true
+gitlab_gitlab_notify_pusher: false
+
+gitlab_gitlab_email: notifications@example.com
+gitlab_gitlab_email_reply_to: noreply@example.com
+gitlab_gitlab_incoming_email_address: reply@example.com
+
+gitlab_gitlab_backup_schedule: daily
+gitlab_gitlab_backup_time: 03:00
+
+gitlab_gitlab_timezone: Berlin
+gitlab_gitlab_https: false
+
+# snmp
+
+gitlab_smtp_enabled: false
+gitlab_smtp_domain: www.mydomain.org
+gitlab_smtp_host: smtp.mydomain.org
+gitlab_smtp_port: 587
+gitlab_smtp_user: username
+gitlab_smtp_pass: password
+gitlab_smtp_use_starttls: false
+gitlab_smtp_authentication: login
+
+# db
+
+gitlab_db_name: gitlabhq_production
+gitlab_db_user: gitlab
+gitlab_db_pass: password
+gitlab_db_adapter: postgresql
+gitlab_db_host: postgresql
+gitlab_db_port: 5432
+gitlab_db_extension: pg_trgm

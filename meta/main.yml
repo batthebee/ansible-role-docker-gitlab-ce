@@ -1,0 +1,19 @@
+galaxy_info:
+  author: devnoop
+  description: your description
+  company:
+
+  license: license (GPLv3)
+
+  min_ansible_version: 2.1
+
+  github_branch: master
+
+  platforms:
+  - name: Ubuntu
+   versions:
+   - xenial
+
+  galaxy_tags: [ gitlab, git, docker ]
+
+dependencies: []

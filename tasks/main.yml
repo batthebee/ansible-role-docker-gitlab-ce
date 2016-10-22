@@ -1,0 +1,41 @@
+---
+# File: main.yml
+# Type: task
+# Part: gitlab
+
+
+- name: docker-gitlab-ce | load playbook-specific configuration
+  include_vars: "vars/docker-gitlab-ce/{{ gitlab_config }}/override.yml"
+  when: gitlab_config is defined
+
+- name: docker-gitlab-ce | using role defaults ( 'gitlab_config' not defined )
+  debug: msg="To add project specific configuration, set 'gitlab_config' and override default configuration ('role'/defaults) with new values in vars/docker-gitlab-ce/'gitlab_config'/override.yml."
+  when:  not gitlab_config is defined
+
+- name: docker-gitlab-ce | create gitlab directory
+  file: "state=directory path={{ gitlab_container_home }} owner=root group=root mode=0775"
+
+- name: docker-gitlab-ce | deploy configuration
+  template: "src={{ item }}.j2 dest={{ gitlab_container_home }}/{{ item }} owner=root group=root mode=0644"
+  with_items:
+   - "docker-compose.yml"
+   - "gitlab.env"
+   - "db.env"
+   - "imap.env"
+   - "oauth.env"
+   - "redis.env"
+   - "smtp.env"
+
+- name: docker-gitlab-ce | absent
+  docker_service:
+    project_name: "{{ gitlab_container_name }}"
+    project_src: "{{ gitlab_container_home }}"
+    state: absent
+
+- name: docker-gitlab-ce | start
+  docker_service:
+    project_name: "{{ gitlab_container_name }}"
+    project_src: "{{ gitlab_container_home }}"
+  register: output
+
+- debug: var=output
