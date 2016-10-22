@@ -14,28 +14,31 @@ Role Variables
 
 All Variables are prefixed with 'gitlab_'.
 
-Setup container destination:
+**Setup container destination:**
 
-gitlab_container_name - docker name of gitlab instance
-gitlab_container_home - destination on target where to install the container
+*gitlab_container_name* - docker name of gitlab instance
 
-Setup container:
+*gitlab_container_home* - destination on target where to install the container
+
+**Setup container:**
 
 For all aviable Variables see: [sameersbn/docker-gitlab](https://github.com/sameersbn/docker-gitlab)
 
 all variables needs to be prefixed by 'gitlab_'.
+
 i.e. 'gitlab_db_user' needs to be 'gitlab_gitlab_db_user'
 
 
 Dependencies
 ------------
 
-TODO
+None
 
 Example Playbook
 ----------------
 
 TODO
+
 
 License
 -------
@@ -45,4 +48,4 @@ GPLv3
 Author Information
 ------------------
 
-TODO
+Original : Florian Schimmer
