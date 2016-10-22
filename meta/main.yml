@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Florian Schimmer
   description: ansible role to setup sameersbn/docker-gitlab with docker-compose
@@ -5,8 +6,11 @@ galaxy_info:
   min_ansible_version: 2.1
   github_branch: master
   platforms:
-  - name: Ubuntu
-   versions:
-   - xenial
-  galaxy_tags: [ gitlab, git, docker ]
-  dependencies: []
+    - name: Ubuntu
+      versions:
+        - xenial
+  galaxy_tags:
+    - gitlab
+    - git
+    - docker
+dependencies:
